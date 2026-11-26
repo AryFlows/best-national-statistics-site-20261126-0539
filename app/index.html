@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frost Stats — Statistik Indonesia 2024</title>
+<meta name="description" content="Frost Stats: angka-angka resmi Indonesia — penduduk, ekonomi, harga, ketenagakerjaan, kemiskinan, perdagangan, dan perbandingan 38 provinsi. Sumber: BPS dan Bank Dunia.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#overview"><span class="brand-mark">❄</span> Frost Stats</a>
+    <nav class="site-nav" aria-label="Bagian situs">
+      <a href="#overview">Ringkasan</a>
+      <a href="#penduduk">Penduduk</a>
+      <a href="#ekonomi">Ekonomi</a>
+      <a href="#harga">Harga</a>
+      <a href="#kerja">Ketenagakerjaan</a>
+      <a href="#miskin">Kemiskinan</a>
+      <a href="#dagang">Perdagangan</a>
+      <a href="#provinsi">Provinsi</a>
+      <a href="#sumber">Sumber</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="overview">
+    <div class="wrap">
+      <p class="eyebrow">Statistik nasional &middot; Indonesia &middot; diperbarui November 2026</p>
+      <h1>Indonesia dalam angka, <span>jelas dan terverifikasi.</span></h1>
+      <p class="lede">Frost Stats menyajikan angka-angka resmi Indonesia — dari jumlah penduduk sampai neraca dagang — dengan sumber dan tahun yang tercantum di setiap angka. Semua grafik digambar dari data di halaman ini; tidak ada angka yang diambil dari internet saat Anda membukanya.</p>
+      <div class="hero-facts">
+        <div><strong>281,6 jt</strong><span>penduduk (2024)</span></div>
+        <div><strong>5,03%</strong><span>pertumbuhan PDB (2024)</span></div>
+        <div><strong>1,57%</strong><span>inflasi (2024)</span></div>
+        <div><strong>8,57%</strong><span>tingkat kemiskinan (2024)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="ringkasan-title">
+    <h2 id="ringkasan-title">Angka kunci 2024</h2>
+    <p class="section-intro">Sepuluh angka yang paling sering dicari tentang Indonesia, lengkap dengan perubahannya dari tahun sebelumnya.</p>
+    <div class="stat-grid" id="stat-grid"></div>
+  </section>
+
+  <section class="wrap section" id="penduduk" aria-labelledby="penduduk-title">
+    <h2 id="penduduk-title">Penduduk</h2>
+    <p class="section-intro">Indonesia adalah negara berpenduduk terbesar keempat di dunia. Pertumbuhan penduduk melambat, sementara penduduk usia produktif mencapai hampir 69 persen dari total.</p>
+    <div class="grid-2">
+      <figure class="card">
+        <figcaption><strong>Jumlah penduduk 2019–2024</strong><span class="source">Sumber: BPS — Proyeksi Penduduk &amp; Sensus 2020</span></figcaption>
+        <canvas id="chart-population" class="chart" height="280" aria-label="Grafik batang jumlah penduduk"></canvas>
+      </figure>
+      <figure class="card">
+        <figcaption><strong>Struktur umur penduduk 2024</strong><span class="source">Sumber: BPS — Proyeksi Penduduk 2024</span></figcaption>
+        <canvas id="chart-age" class="chart chart-donut" height="280" aria-label="Grafik donat struktur umur"></canvas>
+        <ul class="legend" id="age-legend"></ul>
+      </figure>
+    </div>
+    <div class="callout">
+      <strong>Yang perlu diketahui:</strong> bonus demografi Indonesia mencapai puncaknya pada 2030-an — jendela ketika penduduk usia produktif jauh lebih banyak daripada yang ditanggung. Rasio ketergantungan 2024 sekitar 46 per 100 penduduk produktif.
+    </div>
+  </section>
+
+  <section class="wrap section" id="ekonomi" aria-labelledby="ekonomi-title">
+    <h2 id="ekonomi-title">Ekonomi</h2>
+    <p class="section-intro">PDB Indonesia 2024 mencapai Rp22.139 triliun, tumbuh 5,03 persen. Pilih indikator di bawah untuk melihat tren enam tahun terakhir.</p>
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <strong id="line-title">Pertumbuhan ekonomi (PDB riil)</strong>
+          <span class="source" id="line-source"></span>
+        </div>
+        <div class="tabs" id="line-tabs" role="group" aria-label="Pilih indikator">
+          <button type="button" data-series="gdp" class="active" aria-pressed="true">Pertumbuhan PDB</button>
+          <button type="button" data-series="inflation" aria-pressed="false">Inflasi</button>
+          <button type="button" data-series="unemployment" aria-pressed="false">Pengangguran</button>
+          <button type="button" data-series="poverty" aria-pressed="false">Kemiskinan</button>
+        </div>
+      </div>
+      <canvas id="chart-line" class="chart" height="300" aria-label="Grafik garis indikator ekonomi"></canvas>
+    </div>
+    <div class="grid-2">
+      <figure class="card">
+        <figcaption><strong>Komposisi PDB menurut lapangan usaha, 2024</strong><span class="source">Sumber: BPS — PDB menurut Lapangan Usaha</span></figcaption>
+        <canvas id="chart-sectors" class="chart chart-donut" height="280" aria-label="Grafik donat komposisi PDB"></canvas>
+        <ul class="legend" id="sector-legend"></ul>
+      </figure>
+      <div class="card year-picker-card">
+        <h3>Bandingkan tahun demi tahun</h3>
+        <p>Pilih satu tahun untuk melihat seluruh angka utama pada tahun itu.</p>
+        <label for="year-select">Tahun</label>
+        <select id="year-select">
+          <option value="2024" selected>2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+        <div id="year-output" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="harga" aria-labelledby="harga-title">
+    <h2 id="harga-title">Harga &amp; inflasi</h2>
+    <p class="section-intro">Inflasi Desember 2024 tercatat 1,57 persen (year-on-year) — terendah dalam satu dekade — setelah sempat 5,51 persen pada 2022 saat harga energi global melonjak. Inflasi inti dan harga yang diatur pemerintah menjadi penjelas utama pergerakan ini.</p>
+    <div class="card">
+      <p class="chart-note">Grafik di bagian <a href="#ekonomi">Ekonomi</a> — tab “Inflasi” — menunjukkan inflasi tahunan 2019–2024. Angka ringkasnya:</p>
+      <dl class="fact-list">
+        <div><dt>Inflasi 2024</dt><dd><strong>1,57%</strong> (Desember, y-on-y) — BPS</dd></div>
+        <div><dt>Inflasi 2023</dt><dd><strong>2,61%</strong> — BPS</dd></div>
+        <div><dt>Tertinggi 6 tahun</dt><dd><strong>5,51%</strong> pada 2022 — BPS</dd></div>
+        <div><dt>Sasaran Bank Indonesia</dt><dd><strong>2,5% ± 1%</strong> untuk 2024 — Bank Indonesia</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="wrap section" id="kerja" aria-labelledby="kerja-title">
+    <h2 id="kerja-title">Ketenagakerjaan</h2>
+    <p class="section-intro">Angkatan kerja Indonesia Agustus 2024 mencapai 152,11 juta orang. Tingkat pengangguran terbuka turun ke 4,91 persen — level terendah sejak sebelum pandemi — tetapi 59 persen pekerja masih berada di sektor informal.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Angka utama Agustus 2024</h3>
+        <dl class="fact-list">
+          <div><dt>Angkatan kerja</dt><dd><strong>152,11 juta</strong> orang — BPS, Sakernas</dd></div>
+          <div><dt>Tingkat partisipasi (TPAK)</dt><dd><strong>70,63%</strong> — BPS</dd></div>
+          <div><dt>Pekerja informal</dt><dd><strong>59,17%</strong> dari yang bekerja — BPS</dd></div>
+          <div><dt>Pekerja formal</dt><dd><strong>40,83%</strong> dari yang bekerja — BPS</dd></div>
+        </dl>
+      </div>
+      <div class="card">
+        <h3>Tren pengangguran</h3>
+        <p>Pengangguran melonjak ke 7,07 persen pada Agustus 2020 saat pandemi, lalu turun setiap tahun hingga 4,91 persen pada 2024. Lihat grafiknya pada tab “Pengangguran” di bagian <a href="#ekonomi">Ekonomi</a>.</p>
+        <p>Provinsi dengan pengangguran tertinggi 2024 antara lain Banten dan Jawa Barat, sementara Bali dan Sulawesi Barat termasuk yang terendah.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="miskin" aria-labelledby="miskin-title">
+    <h2 id="miskin-title">Kemiskinan &amp; kesejahteraan</h2>
+    <p class="section-intro">Pada September 2024, 8,57 persen penduduk Indonesia — 24,06 juta orang — hidup di bawah garis kemiskinan, turun dari 9,36 persen setahun sebelumnya. Garis kemiskinan September 2024 adalah Rp595.242 per kapita per bulan.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Angka utama September 2024</h3>
+        <dl class="fact-list">
+          <div><dt>Penduduk miskin</dt><dd><strong>24,06 juta</strong> orang (8,57%) — BPS</dd></div>
+          <div><dt>Perkotaan</dt><dd><strong>7,11%</strong> — BPS</dd></div>
+          <div><dt>Perdesaan</dt><dd><strong>11,34%</strong> — BPS</dd></div>
+          <div><dt>Rasio gini (ketimpangan)</dt><dd><strong>0,381</strong> — BPS, September 2024</dd></div>
+        </dl>
+      </div>
+      <div class="card">
+        <h3>Kesejahteraan yang lebih luas</h3>
+        <dl class="fact-list">
+          <div><dt>Indeks Pembangunan Manusia</dt><dd><strong>75,02</strong> (2024) — BPS</dd></div>
+          <div><dt>Umur harapan hidup</dt><dd><strong>74,15 tahun</strong> (2024) — BPS</dd></div>
+          <div><dt>Rata-rata lama sekolah</dt><dd><strong>9,00 tahun</strong> (2024) — BPS</dd></div>
+          <div><dt>Pengeluaran per kapita (disesuaikan)</dt><dd><strong>Rp12,34 juta/tahun</strong> (2024) — BPS</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="dagang" aria-labelledby="dagang-title">
+    <h2 id="dagang-title">Perdagangan luar negeri</h2>
+    <p class="section-intro">Indonesia mencatat surplus perdagangan selama 55 bulan berturut-turut sampai akhir 2024. Ekspor 2024 mencapai US$264,70 miliar dan impor US$233,66 miliar.</p>
+    <div class="grid-2">
+      <figure class="card">
+        <figcaption><strong>Ekspor barang 2019–2024 (miliar US$)</strong><span class="source">Sumber: BPS — Statistik Ekspor</span></figcaption>
+        <canvas id="chart-exports" class="chart" height="260" aria-label="Grafik batang ekspor"></canvas>
+      </figure>
+      <figure class="card">
+        <figcaption><strong>Impor barang 2019–2024 (miliar US$)</strong><span class="source">Sumber: BPS — Statistik Impor</span></figcaption>
+        <canvas id="chart-imports" class="chart" height="260" aria-label="Grafik batang impor"></canvas>
+      </figure>
+    </div>
+    <div class="card">
+      <h3>Komoditas ekspor terbesar 2024</h3>
+      <ul class="export-list" id="export-list"></ul>
+      <p class="fine">Sumber: BPS, Statistik Ekspor 2024. Tiongkok, Amerika Serikat, dan India adalah tiga pasar ekspor terbesar Indonesia.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" id="provinsi" aria-labelledby="provinsi-title">
+    <h2 id="provinsi-title">Perbandingan provinsi</h2>
+    <p class="section-intro">Jawa Barat adalah provinsi terpadat dengan 49,94 juta jiwa, sementara DKI Jakarta adalah yang terpadat per kilometer persegi. Ketik nama provinsi untuk mencari, atau klik judul kolom untuk mengurutkan.</p>
+    <div class="card">
+      <div class="table-tools">
+        <label for="province-search">Cari provinsi</label>
+        <input id="province-search" type="search" placeholder="mis. Jawa Barat, Papua, Bali…" autocomplete="off">
+        <p class="fine" id="province-count"></p>
+      </div>
+      <div class="table-scroll">
+        <table id="province-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" data-sort="name" tabindex="0">Provinsi<span class="arrow"></span></th>
+              <th scope="col" data-sort="pop" tabindex="0" class="num">Penduduk (juta)<span class="arrow"></span></th>
+              <th scope="col" data-sort="share" tabindex="0" class="num">Pangsa (%)<span class="arrow"></span></th>
+              <th scope="col" data-sort="area" tabindex="0" class="num">Luas (km²)<span class="arrow"></span></th>
+              <th scope="col" data-sort="density" tabindex="0" class="num">Kepadatan<span class="arrow"></span></th>
+            </tr>
+          </thead>
+          <tbody id="province-body"></tbody>
+        </table>
+      </div>
+      <p class="fine">Penduduk: estimasi BPS 2024, dibulatkan. Luas wilayah: BPS. Kepadatan dihitung dari keduanya. Pangsa dihitung terhadap total 38 provinsi.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" id="sumber" aria-labelledby="sumber-title">
+    <h2 id="sumber-title">Sumber &amp; metode</h2>
+    <p class="section-intro">Setiap angka di situs ini berasal dari publikasi resmi. Tidak ada data yang diambil dari internet saat halaman dibuka — semua angka tersimpan di berkas data situs ini.</p>
+    <div class="card">
+      <h3>Sumber data</h3>
+      <ul class="source-list">
+        <li><strong>Badan Pusat Statistik (BPS)</strong> — Statistik Indonesia 2025; Berita Resmi Statistik (PDB, inflasi, kemiskinan, ketenagakerjaan, perdagangan); Proyeksi Penduduk 2020–2045; Survei Sosial Ekonomi Nasional (Susenas); Survei Angkatan Kerja Nasional (Sakernas). bps.go.id</li>
+        <li><strong>Bank Dunia (World Bank)</strong> — World Development Indicators: PDB per kapita Indonesia 2024. data.worldbank.org</li>
+        <li><strong>Bank Indonesia</strong> — Sasaran inflasi 2024 (2,5% ± 1%) dan Statistik Ekonomi dan Keuangan Indonesia. bi.go.id</li>
+      </ul>
+      <h3>Metode dan catatan</h3>
+      <ul class="source-list">
+        <li>Angka dibulatkan ke satu atau dua desimal agar mudah dibaca; pembulatan dapat membuat jumlah komponen berbeda 0,1 poin dari totalnya.</li>
+        <li>“Tahun” pada setiap angka adalah tahun rujukan publikasi, bukan tahun unduhan. Pengangguran dan kemiskinan memakai rilis Agustus dan September 2024.</li>
+        <li>Estimasi penduduk provinsi memakai proyeksi BPS 2024 dan dibulatkan ke 0,01 juta; totalnya sekitar 280,5 juta karena pembulatan tiap provinsi.</li>
+        <li>Situs ini statis: seluruh data berada di <code>app/data.js</code>, grafik digambar oleh <code>app/views.js</code> dengan Canvas, dan interaksi diatur <code>app/main.js</code>. Tidak ada permintaan jaringan.</li>
+      </ul>
+      <p class="fine">Frost Stats adalah situs independen dan bukan situs resmi BPS atau pemerintah Indonesia.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>Frost Stats</strong> — Statistik Indonesia, jelas dan terverifikasi. Data: BPS, Bank Dunia, Bank Indonesia (2019–2024).</p>
+    <p class="fine">Dibangun sebagai situs statis tanpa pelacakan dan tanpa permintaan jaringan. &copy; <span id="footer-year">2026</span> Frost Stats.</p>
+  </div>
+</footer>
+
+<script type="module" src="main.js"></script>
+<noscript>
+  <p class="noscript-note">Frost Stats membutuhkan JavaScript untuk menggambar grafik dan tabel interaktif. Angka-angka utama tetap tercantum di atas; aktifkan JavaScript untuk melihat seluruh grafik.</p>
+</noscript>
+</body>
+</html>
